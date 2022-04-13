@@ -1,5 +1,5 @@
 import rx
-from rx import Observable, Observer
+from rx.core import Observer
 
 # Here we define our custom observer which
 # contains an on_next method, an on_error method
@@ -24,7 +24,8 @@ class temperatureObserver(Observer):
   def on_completed(self):
     print("All Temps Read")
 
-# Publish some fake temperature readings 
-xs = Observable.from_iterable(range(10))
+# Publish some fake temperature readings
+xs = rx.from_iterable(range(10))
+
 # subscribe to these temperature readings
 d = xs.subscribe(temperatureObserver())
